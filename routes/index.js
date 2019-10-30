@@ -1,10 +1,16 @@
 const express = require("express");
 const router = express.Router();
+const fs = require("fs");
+const fetch = require("node-fetch");
+//this is where music favourites will be stored
+var favMusic = require("../favoritesMusic.json");
+//this is where music favourites will be stored
+var favBooks = require("../favoritesBooks.json");
 
 //this fetches api for song entered by user
 router.get("/music", (req, res) => {
   fetch(
-    `https://itunes.routerle.com/search?term=${encodeURIComponent(
+    `https://itunes.apple.com/search?term=${encodeURIComponent(
       req.query.search
     )}&limit=10&entity=song`
   )
@@ -58,7 +64,7 @@ router.delete("/favoritesMusic", (req, res) => {
 //this fetches api for book entered by user
 router.get("/book", (req, res) => {
   fetch(
-    `https://itunes.routerle.com/search?term=${encodeURIComponent(
+    `https://itunes.apple.com/search?term=${encodeURIComponent(
       req.query.search
     )}&limit=10&entity=ebook`
   )

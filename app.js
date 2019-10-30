@@ -1,14 +1,8 @@
 const express = require("express");
 const app = express();
-const fetch = require("node-fetch");
-const fs = require("fs");
 const bodyParser = require("body-parser");
 //helmet protects code
 const helmet = require("helmet");
-//this is where music favourites will be stored
-var favMusic = require("./favoritesMusic.json");
-//this is where music favourites will be stored
-var favBooks = require("./favoritesBooks.json");
 const index = require('./routes/index')
 const path = require("path");
 
@@ -17,8 +11,8 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(helmet());
 
-app.use('/', index);
 
+app.use('/', index);
 
 
 if (process.env.NODE_ENV === "production") {
